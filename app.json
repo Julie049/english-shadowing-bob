@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "english-ai-app",
+    "name": "English AI",
     "slug": "english-ai-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -32,10 +32,16 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
-      ]
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Allow English AI to access your microphone for shadowing practice."
+        }
+      ],
+      "expo-video"
     ],
     "experiments": {
-      "typedRoutes": true,
       "reactCompiler": true
     }
   }
