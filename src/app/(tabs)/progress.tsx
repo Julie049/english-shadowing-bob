@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFocusEffect } from 'expo-router';
 import { Card, ProgressBar, Screen } from '@/components/ui';
 import { palette } from '@/constants/design';
 import { loadWeakWords, type WeakWordEntry } from '@/services/weak-words-storage';
@@ -8,9 +9,11 @@ import { loadWeakWords, type WeakWordEntry } from '@/services/weak-words-storage
 export default function Progress() {
   const [weakWords, setWeakWords] = useState<WeakWordEntry[]>([]);
 
-  useEffect(() => {
-    loadWeakWords().then(setWeakWords);
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      loadWeakWords().then(setWeakWords);
+    }, []),
+  );
 
   return (
     <Screen>
